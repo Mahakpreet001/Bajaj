@@ -49,7 +49,6 @@ const calculateLCM = (arr) => {
 
 const getAIResponse = async (prompt) => {
     try {
-        // Primary: Try gemini-2.5-flash (Confirmed working!)
         const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
         const result = await model.generateContent(`Answer the following question in exactly one single word: ${prompt}`);
         const response = await result.response;
@@ -57,7 +56,6 @@ const getAIResponse = async (prompt) => {
     } catch (error) {
         console.error("Gemini API Failed:", error.message);
 
-        // Secondary: Try gemini-pro
         try {
             const model = genAI.getGenerativeModel({ model: "gemini-pro" });
             const result = await model.generateContent(`Answer the following question in exactly one single word: ${prompt}`);
